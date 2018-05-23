@@ -1,11 +1,9 @@
 package com.udacity.gradle.builditbigger;
 
-import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.util.Pair;
 
 import com.google.api.client.extensions.android.http.AndroidHttp;
 import com.google.api.client.extensions.android.json.AndroidJsonFactory;
@@ -16,7 +14,7 @@ import com.udacity.gradle.builditbigger.backend.myApi.MyApi;
 import java.io.IOException;
 
 /**
- * Created by emil.ivanov on 5/23/18.
+ * Created by emil.ivanov
  * Headless fragment that contains the AsyncTask responsible for execution of network requests
  * Interested classes will receive callbacks for the state when they implement {@link IRequestState}
  */
@@ -58,6 +56,7 @@ public class AsyncFragment extends Fragment {
             mAsyncTask.execute();
         }
     }
+
 
     /**
      * Async task responsible for execution of network request.
@@ -103,7 +102,7 @@ public class AsyncFragment extends Fragment {
             try {
                 return myApiService.generateJoke().execute().getData();
             } catch (IOException e) {
-                mListener.onCancel();
+                cancel(true);
                 return e.getMessage();
             }
         }

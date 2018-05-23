@@ -64,7 +64,7 @@ public class FreeVersionTestFlow {
 
         onView(CoreMatchers.<View>instanceOf(Button.class)).check(matches(withText(ACTION_TEXT)));
 
-        onView(withId(R.id.adView)).check(matches(isDisplayed()));
+        onView(withId(R.id.adBannerView)).check(matches(isDisplayed()));
 
         onView(CoreMatchers.<View>instanceOf(Button.class)).perform(click());
 

@@ -4,15 +4,13 @@ import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
-import com.buildbigger.libjokevisualizer.JokeVisualizerActivity;
 import com.udacity.gradle.builditbigger.databinding.ActivityMainBinding;
 
 
-public class MainActivity extends AppCompatActivity implements AsyncFragment.IRequestState {
+public class MainActivity extends AppCompatActivity implements ITellJokeInteraction, AsyncFragment.IRequestState {
     ActivityMainBinding mBinding;
 
     @Override
@@ -20,9 +18,23 @@ public class MainActivity extends AppCompatActivity implements AsyncFragment.IRe
         super.onCreate(savedInstanceState);
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
 
+        MainActivityFragment mainActivityFragment = (MainActivityFragment) getSupportFragmentManager().findFragmentById(R.id.fragment);
+        if (mainActivityFragment != null) {
+            mainActivityFragment.setListener(this);
+        } else {
+            Toast.makeText(this, R.string.error_loading_joke, Toast.LENGTH_LONG).show();
+        }
     }
 
-    public void tellJoke(View view) {
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+    }
+
+
+    @Override
+    public void onTellJokeEvent() {
         requestJokeFromApi();
     }
 
@@ -42,17 +54,7 @@ public class MainActivity extends AppCompatActivity implements AsyncFragment.IRe
         } else {
             asyncFragment.requestJoke();
         }
-
     }
-
-    private void displayJoke(String joke) {
-        Intent intent = new Intent(this, JokeVisualizerActivity.class);
-        intent.putExtra("joke", joke);
-
-        startActivity(intent);
-
-    }
-
 
     @Override
     public void onPreExecute() {
@@ -66,12 +68,19 @@ public class MainActivity extends AppCompatActivity implements AsyncFragment.IRe
 
     @Override
     public void onCancel() {
-
+        mBinding.progressBar.setVisibility(View.GONE);
     }
 
     @Override
     public void onPostExecute(String result) {
         mBinding.progressBar.setVisibility(View.GONE);
-        displayJoke(result);
+        MainActivityFragment mainActivityFragment = (MainActivityFragment) getSupportFragmentManager().findFragmentById(R.id.fragment);
+        if (mainActivityFragment != null) {
+            mainActivityFragment.displayJoke(result);
+        } else {
+            Toast.makeText(this, R.string.error_loading_joke, Toast.LENGTH_LONG).show();
+        }
     }
+
+
 }
