@@ -11,7 +11,7 @@ import com.udacity.gradle.builditbigger.databinding.ActivityMainBinding;
 
 
 public class MainActivity extends AppCompatActivity implements ITellJokeInteraction, AsyncFragment.IRequestState {
-    ActivityMainBinding mBinding;
+    private ActivityMainBinding mBinding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,11 +59,6 @@ public class MainActivity extends AppCompatActivity implements ITellJokeInteract
     @Override
     public void onPreExecute() {
         mBinding.progressBar.setVisibility(View.VISIBLE);
-    }
-
-    @Override
-    public void onDoInBackground() {
-
     }
 
     @Override

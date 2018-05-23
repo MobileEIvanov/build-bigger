@@ -1,8 +1,10 @@
 <resources>
     <string name="app_name">Build it Bigger</string>
     <string name="instructions">Press the button for a delicious joke!</string>
-    <string name="button_text">Tell Joke</string>
+    <string name="button_text">Tell me A Joke</string>
     <string name="action_settings">Settings</string>
     <string name="banner_ad_unit_id">ca-app-pub-3940256099942544/6300978111</string>
+    <string name="full_screen_ad_unit_id">ca-app-pub-3940256099942544/1033173712</string>
+    <string name="adds_initialize_id">ca-app-pub-3940256099942544~3347511713</string>
     <string name="error_loading_joke">Something went wrong</string>
 </resources>

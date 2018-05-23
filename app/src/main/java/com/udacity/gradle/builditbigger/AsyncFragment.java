@@ -64,7 +64,7 @@ public class AsyncFragment extends Fragment {
      */
     static class EndpointsAsyncTask extends AsyncTask<Void, Void, String> {
         private MyApi myApiService = null;
-        private IRequestState mListener;
+        private final IRequestState mListener;
 
         public EndpointsAsyncTask(IRequestState listener) {
             mListener = listener;
@@ -79,7 +79,6 @@ public class AsyncFragment extends Fragment {
         @Override
         protected String doInBackground(Void... voids) {
             if (myApiService == null) {  // Only do this once
-                mListener.onDoInBackground();
                 MyApi.Builder builder = new MyApi.Builder(AndroidHttp.newCompatibleTransport(),
                         new AndroidJsonFactory(), null)
                         // options for running against local devappserver
@@ -126,8 +125,6 @@ public class AsyncFragment extends Fragment {
      */
     public interface IRequestState {
         void onPreExecute();
-
-        void onDoInBackground();
 
         void onCancel();
 

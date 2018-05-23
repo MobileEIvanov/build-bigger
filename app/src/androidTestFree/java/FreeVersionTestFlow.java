@@ -28,7 +28,7 @@ import static org.hamcrest.Matchers.allOf;
 @RunWith(AndroidJUnit4.class)
 public class FreeVersionTestFlow {
     public static final String INSTRUCTIONS = "Press the button for a delicious joke!";
-    private static final String ACTION_TEXT = "Tell Joke";
+    private static final String ACTION_TEXT = "Tell me A Joke";
 
     /**
      * The ActivityTestRule is a rule provided by Android used for functional testing of a single

@@ -26,6 +26,14 @@ allprojects {
     }
 }
 
+/**
+ * Task execution in succession
+ * https://docs.gradle.org/current/dsl/org.gradle.api.tasks.GradleBuild.html
+ */
+task startInstrumentationTest(type: GradleBuild) {
+    tasks = [':backend:appengineStart', ':app:connectedAndroidTest', ':backend:appengineStop']
+}
+
 task clean(type: Delete) {
     delete rootProject.buildDir
 }

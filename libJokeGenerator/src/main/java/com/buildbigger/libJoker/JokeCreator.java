@@ -3,7 +3,7 @@ package com.buildbigger.libJoker;
 import java.util.Random;
 
 public class JokeCreator {
-    private static String[] jokes = {
+    private static final String[] jokes = {
             "Hartley's First Law:\n" +
                     "         You can lead a horse to water, but if you can get him to float\n" +
                     "         on his back, you've got something.\n",

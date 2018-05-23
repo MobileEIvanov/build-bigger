@@ -14,16 +14,13 @@ import com.udacity.gradle.builditbigger.databinding.FragmentMainBinding;
 import static android.app.Activity.RESULT_OK;
 
 
-/**
- * A placeholder fragment containing a simple view.
- */
 public class MainActivityFragment extends Fragment {
 
-    ITellJokeInteraction mCallbackTellJokeInteraction;
-    FragmentMainBinding mBinding;
+    private ITellJokeInteraction mCallbackTellJokeInteraction;
+    private FragmentMainBinding mBinding;
 
 
-    View.OnClickListener mListenerClick = new View.OnClickListener() {
+    private final View.OnClickListener mListenerClick = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
             if (mCallbackTellJokeInteraction != null) {
