@@ -8,10 +8,10 @@ The project initial work is based on the *Udacity* code which can be found [here
 ## Project Architecture
 
 The project has four modules:
- **Core Application Module - "app"** with free and paid features.
- **Java Library Module - "libJokeGenerator"** provides the jokes to the backend
- **Backend Module with Google Cloud SDK - "backend"** suplies the generated jokes
- **Android Libarary Module - "libJokeVisualizer"** - displayes the provided jokes
+- **Core Application Module - "app"** with free and paid features.
+- **Java Library Module - "libJokeGenerator"** provides the jokes to the backend
+- **Backend Module with Google Cloud SDK - "backend"** suplies the generated jokes
+- **Android Libarary Module - "libJokeVisualizer"** - displayes the provided jokes
  
 ### Prerequisites
 
