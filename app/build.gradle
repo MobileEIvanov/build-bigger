@@ -43,22 +43,32 @@ android {
         }
         paid {
             applicationIdSuffix ".paid"
+
         }
     }
 
 
 }
 
+
+
+
+
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     endpointsServer project(path: ':backend', configuration: 'endpoints')
     implementation project(path: ':libJokeGenerator')
+
     implementation "com.android.support:appcompat-v7:$rootProject.supportLib"
-    implementation 'com.android.support.constraint:constraint-layout:1.1.0'
-    implementation 'com.google.android.gms:play-services-ads:15.0.1'
+    implementation "com.android.support.constraint:constraint-layout:$rootProject.constraintLib"
+
     implementation 'com.google.api-client:google-api-client:1.23.0'
     implementation 'com.google.http-client:google-http-client-android:1.23.0'
     implementation 'com.google.code.findbugs:jsr305:3.0.1'
+
+    // Free flavor dependencies
+    freeImplementation 'com.google.android.gms:play-services-ads:15.0.1'
+
 
     androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
@@ -66,5 +76,5 @@ dependencies {
 
 
     testImplementation 'junit:junit:4.12'
-    compile project(path: ':libJokeVisualizer')
+    implementation project(path: ':libJokeVisualizer')
 }

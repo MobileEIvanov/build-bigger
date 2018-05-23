@@ -54,7 +54,7 @@ public class AsyncFragment extends Fragment {
 
     public void requestJoke() {
         if (mListener != null) {
-            mAsyncTask = new EndpointsAsyncTask();
+            mAsyncTask = new EndpointsAsyncTask(mListener);
             mAsyncTask.execute();
         }
     }
@@ -65,6 +65,11 @@ public class AsyncFragment extends Fragment {
      */
     static class EndpointsAsyncTask extends AsyncTask<Void, Void, String> {
         private MyApi myApiService = null;
+        private IRequestState mListener;
+
+        public EndpointsAsyncTask(IRequestState listener) {
+            mListener = listener;
+        }
 
         @Override
         protected void onPreExecute() {
